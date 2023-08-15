@@ -1,0 +1,120 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Login - Driver Time Utilization</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+<!-- Favicons -->
+<link href="{% static "assets/img/driver.jpg" %}" rel="icon">
+<link href="{% static "assets/img/driver.jpg" %}" rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="{% static "assets/vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+<link href="{% static "assets/vendor/bootstrap-icons/bootstrap-icons.css" %}" rel="stylesheet">
+<link href="{% static "assets/vendor/fontawesome-free/css/all.min.css" %}" rel="stylesheet">
+<link href="{% static "assets/vendor/aos/aos.css" %}" rel="stylesheet">
+<link href="{% static "assets/vendor/glightbox/css/glightbox.min.css" %}" rel="stylesheet">
+<link href="{% static "assets/vendor/swiper/swiper-bundle.min.css" %}" rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="{% static "assets/css/main.css" %}" rel="stylesheet">
+
+</head>
+<body>
+
+    {% include 'header.html' %}
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs d-flex align-items-center" 
+    style="background-image: url({% static "assets/img/breadcrumbs-bg.jpg" %}); ">
+      <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+
+        <h2>Admin Login Page</h2>
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li>Admin Login Page</li>
+        </ol>
+
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 mt-1">
+
+          <div class="col-lg-6 ">
+           
+           <center> <img src="{% static "assets/img/hero-carousel/img1.jpg" %}" style="height:300px;width:100%;"/>
+           </center>
+
+          </div><!-- Image -->
+
+          <div class="col-lg-4" style="background-color: aquamarine;
+          padding-top: 4%;">
+           <center>
+            {% if messages %}
+               {% for x in messages %}
+               <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong style="color:red;"> {{x}} </strong>
+                <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+                {% endfor %}
+            {% endif %}
+           </center>
+            <form action="/login/" method="POST" name="login_form">
+              <!-- give login path name in action="login"  using data will read by POST method and then credentials will check -->
+           {% csrf_token %}
+    
+      <!-- Cross-Site Request Forgery (CSRF) is an attack that forces authenticated users to submit a request to a Web application against which they are currently authenticated.
+      CSRF Token used to prevent unathorized person could not submit form from your website-->
+
+            <center> <h3> Admin Login Page </h3></center>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="User Name" name="username" required autocomplete="off">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="Your Password" name="password" required>
+              </div>
+             
+           <center>   <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary py-2 px-5" name="submit">
+              </div>
+            </center>  
+            </form>
+
+          </div>   <!-- End Contact Form -->
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  {% include 'footer.html' %}
+  <!-- End Footer -->
+
+
+
+</body>
+
+</html>
